@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4E4E4E;
+    padding: 2vh 2vw; /* Utilisation de vh et vw pour les paddings */
+    font-family: "Tenor Sans", sans-serif;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 4.2vw; /* Utilisation de vw pour la taille du logo */
+    height: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px; /* Utilisation de vw pour la taille de la police */
+    margin-right: 2vw; /* Utilisation de vw pour les marges des liens */
+}
+
+
+nav a:hover {
+    color: #a19e9e; /* Change la couleur pour l'effet de survol */
+}
+
+nav a img {
+    width: 3vw; /* Utilisation de vw pour la taille de l'icône utilisateur */
+    height: auto;
+}
