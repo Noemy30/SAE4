@@ -1,0 +1,10 @@
+Administrateur :
+	user : Admin
+	password : MotDePasseAdmin88100
+
+Membre : 
+	user : 1
+	password : pass1
+
+(autre compte voir BDD)
+	

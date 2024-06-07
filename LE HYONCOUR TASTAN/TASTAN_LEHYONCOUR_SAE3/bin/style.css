@@ -1,0 +1,223 @@
+body {
+    background-image: url('background2.jpeg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #E4FF00;
+    margin: 0;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+
+.navbar a {
+color: #000000;
+text-align: center;
+padding: 14px 20px;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+background-color: #FFFFFF;
+color: #E4FF00;
+}
+
+.navbar p:hover {
+    background-color: #FFFFFF;
+    color: #E4FF00; 
+}
+
+.navbar img {
+    width : 30px;
+    height : 30px;
+}
+
+.footer {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #E4FF00;
+    margin: 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer a {
+    color: #000000;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    }
+    
+    .footer a:hover {
+    background-color: #FFFFFF;
+    color: #E4FF00;
+    }
+    
+    .footer p:hover {
+        background-color: #FFFFFF;
+        color: #E4FF00; 
+    }
+
+@media screen and (max-width: 600px) {
+.navbar {
+flex-direction: column;
+}
+}
+
+header {
+    text-align: center;
+    padding: 50px;
+}
+
+header h1 {
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+header p {
+    font-size: 1.5em;
+    color: #ccc;
+}
+
+.main-image {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.main-image img {
+    max-width: 80%;
+    border-radius: 10px;
+}
+
+.main-image h2 {
+    font-size: 2em;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.main-image a {
+    display: block;
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #fff;
+}
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.form-container input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-container input[type="submit"] {
+    background-color: #E4FF00;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: black;
+}
+
+
+.login-container {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+    margin-right: 17px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #E4FF00;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.input-seconnecter {
+    margin-right: -3px;
+    margin-left: -1px;
+}
+
+.connexion {
+    color: #E4FF00;
+}
+
+.input-seconnecter button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; 
+}
+
+
+  .input-seconnecter button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  .input-seconnecter button span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .input-seconnecter button:hover {
+    background-color: #f7c2f9;
+  }
+  .input-seconnecter button:hover span {
+    padding-right: 25px;
+  }
+  .input-seconnecter button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
