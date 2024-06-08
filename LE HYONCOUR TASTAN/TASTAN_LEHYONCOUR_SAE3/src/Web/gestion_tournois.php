@@ -1,108 +1,139 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php 
+require('header1.php'); 
+require('connexion.php');
+?>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des tournois</title>
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <link href="style.css" rel="stylesheet" />
-    <style>
-        body {
-            background-image: url('background2.jpeg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: Black;
-        }
-
-        .navbar {
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            background-color: #E4FF00;
-        }
-
-        .navbar a {
-            color: #000000;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            background-color: #FFFFFF;
-            color: #E4FF00;
-        }
-
-        @media screen and (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-            }
-        }
-
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px auto;
-            max-width: 700px;
-        }
-
-        .form-container input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 5px 0;
-            border: none;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .form-container input[type="submit"] {
-            background-color: #E4FF00;
-            color: #000;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .form-container input[type="submit"]:hover {
-            background-color: #FFFFFF;
-        }
-    </style>
+    <link href="css/tournois.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
+        rel="stylesheet" type="text/css">
 </head>
+
 <body>
-    <div class="navbar">
-    <a href="index.php">Accueil</a>
-        <a href="formulaire_inscription.php">S'inscrire</a>
-        <a href="gestion_tournois.php">Tournois</a>
-        <a href="galerie.php">Espace multimédia</a>
-        <a href="document.php">Espace documentation</a>
-        <a href="partenaire.php">Nos partenaires</a>
-        <a href="espace_membre.php" ><img src="img/user.png" /></a>
-        <a href="admin.php" ><img src="img/admin.png" /></a>
+    <div class="title">
+        <h2>Tournois de Tennis</h2>
     </div>
 
+    <div class="form-container">
 
-    <h2>Tournois de Tennis</h2>
-        <div class="form-container">
-            <ul>
-                    <!-- Liste des compétitions existantes -->
-                <h2>Liste des Compétitions 2024</h2>
-                <?php include 'afficher_competitions.php'; ?>
-        </div>
-        <div class="form-container">
-            <!-- Liste des demandes d'inscription -->
-            <h2>Compétitions avec places disponibles</h2>
-            <?php include 'afficher_competitions_disponibles.php'; ?>
-        </div>  
-            </ul>
-    <footer>
-        <div class="footer">
-        <a href="cgu.php">CGU</a>
-    </div></footer>
-   
+        <h2>Liste des Compétitions 2024</h2>
+
+
+        <table class="competition-table">
+            <thead>
+                <tr>
+                    <th>Lieu</th>
+                    <th>Horaire et Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Récupérer les données des compétitions depuis la base de données
+                $sql = "SELECT lieu, horaire FROM competitions";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['lieu']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['horaire']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='2'>Aucune compétition trouvée</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-container">
+        <h2>Compétitions avec places disponibles</h2>
+        <table class="competition-table">
+            <thead>
+                <tr>
+                    <th>Lieu</th>
+                    <th>Horaire</th>
+                    <th>Places disponibles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Récupérer les compétitions avec places disponibles
+                $sql = "SELECT lieu, horaire, places_disponibles FROM competitions WHERE places_disponibles > 0";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['lieu']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['horaire']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['places_disponibles']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='3'>Aucune compétition avec places disponibles</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-container">
+        <h2>Demandes d'inscription en attente</h2>
+        <?php
+        $sql = "SELECT * FROM demandes_inscription WHERE etat = 'en_attente'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // Afficher les demandes d'inscription dans un tableau
+            echo "<table>";
+            echo "<tr><th>Nom</th><th>Prénom</th><th>Niveau de pratique</th></tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($row['nom']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['prenom']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['niveau_pratique']) . "</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "Aucune demande d'inscription en attente.";
+        }
+
+        ?>
+    </div>
+
+    <div class="form-container">
+        <h2>Inscription à une compétition</h2>
+        <?php
+       
+        // Récupérer la liste des compétitions disponibles (places disponibles > 0)
+        $sql = "SELECT * FROM competitions WHERE places_disponibles > 0";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            // Afficher les compétitions dans un formulaire
+            echo "<form action='ajouter_inscription.php' method='post'>";
+            echo "<ul>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<li>";
+                echo " ID de la compétition : " . $row['id'];
+                echo "</li>";
+                echo "<li>";
+                echo $row['lieu'] . " - " . $row['horaire'] . " (Places disponibles : " . $row['places_disponibles'] . ")";
+                echo "</li>";
+            }
+            echo "</ul>";
+            echo "<input type='submit' value='Vous inscrire à une compétition ! '>";
+            echo "</form>";
+        } else {
+            echo "Aucune compétition disponible pour le moment.";
+        }
+        // Fermer la connexion à la base de données
+        $conn->close();
+        ?>
+    </div>
+
+    <?php require('footer.php'); ?>
 </body>
+
 </html>

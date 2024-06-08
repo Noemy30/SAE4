@@ -11,8 +11,8 @@
         <div class="footer-content">
             <p class="footer-left">Tennis4Ever</p>
             <p class="footer-right">
-                <a href="#">Mentions légales</a> |
-                <a href="#">Conditions générales d'utilisation</a>
+                <a href="cgu.php">Mentions légales</a> |
+                <a href="cgu.php">Conditions générales d'utilisation</a>
             </p>
         </div>
     </div>

@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4E4E4E;
+    padding: 2vh 2vw; /* Utilisation de vh et vw pour les paddings */
+    font-family: "Tenor Sans", sans-serif;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 4.2vw; /* Utilisation de vw pour la taille du logo */
+    height: auto;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px; /* Utilisation de vw pour la taille de la police */
+    margin-right: 2vw; /* Utilisation de vw pour les marges des liens */
+}
+
+nav a:hover {
+    color: #a19e9e; /* Change la couleur pour l'effet de survol */
+}
+
+nav img {
+    width: 3vw; /* Utilisation de vw pour la taille de l'icône utilisateur */
+    height: auto;
+}
+
+/* Styles pour la modale */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; 
+    border: 1px solid #888;
+    width: 500px;
+    height: auto;
+}
+
+.connectlog input{
+    display: block;
+    width: 80%;
+    margin-bottom: 10px; 
+    margin-left: 10%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: 1vw;
+}
+
+.haut{
+    margin-top: 30px;
+    text-align: left;
+    margin: 24px 12px 12px 12px;
+    position: relative;
+}
+
+.haut img{
+    width: 15%;
+}
+
+.boutonlog { 
+    display: flex;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    margin-left: 20%;
+}
+
+.boutonlog button{ 
+    background-color: #9ACB34;
+    padding: 8px 24px;
+    border-radius: 5px;
+    margin-left: 30px;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: black;
+    font-size: 35px;
+    font-weight: bold;
+}

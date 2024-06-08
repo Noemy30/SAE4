@@ -1,9 +1,9 @@
 <?php
-require ('header.php');
+require ('header1.php');
 ?>
 
 <head>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/accueil.css">
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
         rel="stylesheet" type="text/css">
 </head>
@@ -49,10 +49,15 @@ require ('header.php');
         <div class="box_installation">
             <h3>Nos Installations</h3>
             <p>Nos installations modernes offrent des courts bien entretenus, équipés de l'éclairage nécessaire pour des
-                parties nocturnes passionnantes. Notre club-house chaleureux est l'endroit idéal pour se détendre après
-                un
-                match intense, échanger des anecdotes et partager des moments de camaraderie.</p>
+                parties nocturnes passionnantes. 
+                <br><br>
+                Notre club-house chaleureux est l'endroit idéal pour se détendre après
+                un match intense, échanger des anecdotes et partager des moments de camaraderie.</p>
         </div>
+        <div class="img_box">
+            <img src="img/cours2.jpeg" alt="Photo salle de tennis">
+        </div>
+
 
         <div class="box_adhesion">
             <h3>Adhésion</h3>

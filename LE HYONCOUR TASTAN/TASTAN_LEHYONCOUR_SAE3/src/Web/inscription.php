@@ -1,5 +1,6 @@
 <?php
 include 'connexion.php';
+require('header1.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST['nom'];

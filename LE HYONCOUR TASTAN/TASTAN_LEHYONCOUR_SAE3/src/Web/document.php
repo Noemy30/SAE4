@@ -48,27 +48,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Télécharger un document</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link href="css/document.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
+        rel="stylesheet" type="text/css">
         
 </head>
+
+
 <body>
-    <div class="navbar">
-    <a href="index.php">Accueil</a>
-        <a href="formulaire_inscription.php">S'inscrire</a>
-        <a href="gestion_tournois.php">Tournois</a>
-        <a href="galerie.php">Espace multimédia</a>
-        <a href="document.php">Espace documentation</a>
-        <a href="partenaire.php">Nos partenaires</a>
-        <a href="espace_membre.php" ><img src="img/user.png" /></a>
-        <a href="admin.php" ><img src="img/admin.png" /></a>
-        </div>
     <div class="form-container">
         <h2>Choisir un document à envoyer</h2>
         <form action="document.php" method="post" enctype="multipart/form-data">

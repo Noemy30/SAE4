@@ -1,48 +1,51 @@
-<!DOCTYPE html>
+<?php
+require ('header1.php')
+    ?>
 <html>
+
 <head>
     <title>Inscription</title>
-    <link href="style.css" rel="stylesheet" />
+    <link href="css/inscription.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
+        rel="stylesheet" type="text/css">
 </head>
+
 <body>
-    <div class="navbar">
-    <a href="index.php">Accueil</a>
-        <a href="formulaire_inscription.php">S'inscrire</a>
-        <a href="gestion_tournois.php">Tournois</a>
-        <a href="galerie.php">Espace multimédia</a>
-        <a href="document.php">Espace documentation</a>
-        <a href="partenaire.php">Nos partenaires</a>
-        <a href="espace_membre.php" ><img src="img/user.png" /></a>
-        <a href="admin.php" ><img src="img/admin.png" /></a>
-    </div>
+
 
     <div class="form-container">
         <h2>S'inscrire en tant que membre</h2>
 
         <form action="formulaire_inscription.php" method="post">
-            <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="nom"><br>
+            <div class="formulaire">
+                <label for="nom">Nom:</label>
+                <input type="text" id="nom" name="nom"><br>
 
-            <label for="prenom">Prénom:</label>
-            <input type="text" id="prenom" name="prenom"><br>
+                <label for="prenom">Prénom:</label>
+                <input type="text" id="prenom" name="prenom"><br>
 
-            <label for="niveau_pratique">Niveau de pratique:</label>
-            <input type="text" id="niveau_pratique" name="niveau_pratique"><br>
+                <label for="niveau_pratique">Niveau de pratique:</label>
+                <input type="text" id="niveau_pratique" name="niveau_pratique"><br>
 
-            <label for="age">Age:</label>
-            <input type="text" id="age" name="age"><br>
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age"><br>
 
-            <label for="ville">Ville:</label>
-            <input type="text" id="ville" name="ville"><br>
+                <label for="ville">Ville:</label>
+                <input type="text" id="ville" name="ville"><br>
 
-            <label for="competition_id">Numéro de licence:</label>
-            <input type="text" id="competition_id" name="competition_id"><br>
+                <label for="competition_id">Numéro de licence:</label>
+                <input type="text" id="competition_id" name="competition_id"><br>
 
-            <label for="password">Mot de passe:</label>
-            <input type="text" id="password" name="password"><br>
+                <label for="password">Mot de passe:</label>
+                <input type="text" id="password" name="password"><br>
+            </div>
 
-            <input type="submit" value="Ajouter">
+
+            <div class="btn">
+                <input type="submit" value="Ajouter">
+            </div>
+
         </form>
         <?php
         // Connexion à la base de données (remplacez ces informations par vos propres paramètres)
@@ -85,8 +88,10 @@
         ?>
 
     </div>
-    <div class="footer">
-        <a href="cgu.php">CGU</a>
-    </div>
+
+    <?php
+    require ('footer.php')
+        ?>
 </body>
+
 </html>
