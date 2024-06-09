@@ -1,11 +1,18 @@
-<?php 
-require('header1.php'); 
-require('connexion.php');
+<?php
+require ('header1.php');
+require ('connexion.php');
+
+// Vérifiez si l'utilisateur est connecté
+$isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des tournois</title>
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
     <link href="css/tournois.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
         rel="stylesheet" type="text/css">
@@ -17,10 +24,7 @@ require('connexion.php');
     </div>
 
     <div class="form-container">
-
         <h2>Liste des Compétitions 2024</h2>
-
-
         <table class="competition-table">
             <thead>
                 <tr>
@@ -30,7 +34,6 @@ require('connexion.php');
             </thead>
             <tbody>
                 <?php
-                // Récupérer les données des compétitions depuis la base de données
                 $sql = "SELECT lieu, horaire FROM competitions";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -60,7 +63,6 @@ require('connexion.php');
             </thead>
             <tbody>
                 <?php
-                // Récupérer les compétitions avec places disponibles
                 $sql = "SELECT lieu, horaire, places_disponibles FROM competitions WHERE places_disponibles > 0";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -85,7 +87,6 @@ require('connexion.php');
         $sql = "SELECT * FROM demandes_inscription WHERE etat = 'en_attente'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            // Afficher les demandes d'inscription dans un tableau
             echo "<table>";
             echo "<tr><th>Nom</th><th>Prénom</th><th>Niveau de pratique</th></tr>";
             while ($row = $result->fetch_assoc()) {
@@ -99,41 +100,37 @@ require('connexion.php');
         } else {
             echo "Aucune demande d'inscription en attente.";
         }
-
         ?>
     </div>
 
     <div class="form-container">
         <h2>Inscription à une compétition</h2>
         <?php
-       
-        // Récupérer la liste des compétitions disponibles (places disponibles > 0)
         $sql = "SELECT * FROM competitions WHERE places_disponibles > 0";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            // Afficher les compétitions dans un formulaire
             echo "<form action='ajouter_inscription.php' method='post'>";
             echo "<ul>";
             while ($row = $result->fetch_assoc()) {
-                echo "<li>";
-                echo " ID de la compétition : " . $row['id'];
-                echo "</li>";
-                echo "<li>";
-                echo $row['lieu'] . " - " . $row['horaire'] . " (Places disponibles : " . $row['places_disponibles'] . ")";
-                echo "</li>";
+                echo "<li>ID de la compétition : " . htmlspecialchars($row['id']) . "</li>";
+                echo "<li>" . htmlspecialchars($row['lieu']) . " - " . htmlspecialchars($row['horaire']) . " (Places disponibles : " . htmlspecialchars($row['places_disponibles']) . ")</li>";
             }
             echo "</ul>";
-            echo "<input type='submit' value='Vous inscrire à une compétition ! '>";
+            if ($isUserLoggedIn) {
+                echo "<input type='submit' value='Vous inscrire à une compétition !'>";
+            } else {
+                echo "<p>Vous devez être connecté pour vous inscrire à une compétition.</p>";
+            }
             echo "</form>";
         } else {
             echo "Aucune compétition disponible pour le moment.";
         }
-        // Fermer la connexion à la base de données
         $conn->close();
         ?>
     </div>
 
-    <?php require('footer.php'); ?>
+
+    <?php require ('footer.php'); ?>
 </body>
 
 </html>

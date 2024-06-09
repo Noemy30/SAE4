@@ -1,92 +1,67 @@
 <?php
-session_start();
+require('header1.php');
+require('connexion.php');
 
-
+// Vérifiez si l'utilisateur est connecté
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-   
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
-include 'connexion.php'; 
-$id = $_SESSION['id'];
-$sql = "SELECT * FROM membre WHERE ID = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $id);
-$stmt->execute();
-$result = $stmt->get_result();
+// Récupérez l'ID de l'utilisateur connecté
+$login_id = $_SESSION['id'];
 
-if ($result->num_rows === 1) {
-    $membre = $result->fetch_assoc();
-} else {
-    echo "Erreur: Membre non trouvé.";
-    exit();
+// Récupérez les informations de l'utilisateur
+$membre = null;
+$sql = "SELECT * FROM membre WHERE ID = ?";  // Assurez-vous que le champ ID correspond à celui que vous utilisez pour identifier les utilisateurs
+if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("s", $login_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $membre = $result->fetch_assoc();
+    }
+    $stmt->close();
 }
 
-$stmt->close();
 $conn->close();
-?>
 
+// Gérer le cas où les informations de l'utilisateur ne sont pas trouvées
+if ($membre === null) {
+    echo "Erreur : informations utilisateur introuvables.";
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil de l'utilisateur</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/membre.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/x-icon" href="img/logo.png">
 </head>
-
 <body>
-    <div class="navbar">
-        <a href="index.php">Accueil</a>
-        <a href="formulaire_inscription.php">S'inscrire</a>
-        <a href="gestion_tournois.php">Tournois</a>
-        <a href="galerie.php">Espace multimédia</a>
-        <a href="document.php">Espace documentation</a>
-        <a href="partenaire.php">Nos partenaires</a>
-        <a href="espace_membre.php"><img src="img/user.png" /></a>
-        <a href="admin.php"><img src="img/admin.png" /></a>
-        <p id="deconnexion" class="button" style="cursor: pointer;">Déconnexion</p>
-    </div>
-    <h2>Bienvenue dans l'espace membre, <?php echo $membre['Nom']; ?> <?php echo $membre['Prenom']; ?>!</h2>
-    <section class="container">
-        <div class="col1">
-
-            <!-- Ajoutez le contenu de l'espace membre ici -->
-            <h2>Vos informations !</h2>
-            <ul>
-                <li>Numéro de licence : <?php echo $membre['ID']; ?></li>
-                <li>Nom : <?php echo $membre['Nom']; ?></li>
-                <li>Prénom : <?php echo $membre['Prenom']; ?></li>
-                <li>Ville : <?php echo $membre['Ville']; ?></li>
-                <li>Age : <?php echo $membre['Age']; ?></li>
-                <li>Niveau : <?php echo $membre['Niveau']; ?></li>
-            </ul>
+    <div class="membre">
+        <div class="title">
+            <h2>Bienvenue dans l'espace membre, <?php echo htmlspecialchars($membre['Nom']); ?> <?php echo htmlspecialchars($membre['Prenom']); ?>!</h2>
         </div>
-
-        <div class="col2">
-            <!-- Contenu de la section du logo -->
-            <img src="img/logo.png" alt="Logo">
-        </div>
-    </section>
-    <script>// Script pour gérer la déconnexion lorsque le texte est cliqué
-        document.getElementById("deconnexion").addEventListener("click", function () {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "deconnexion.php", true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    window.location.href = "connexion_admin.php";
-                }
-            };
-            xhr.send();
-        });
-    </script>
-    <div class="footer">
-        <a href="cgu.php">CGU</a>
+        <section class="container">
+            <div class="col1">
+                <!-- Ajoutez le contenu de l'espace membre ici -->
+                <h2>Vos informations !</h2>
+                <ul>
+                    <li>Numéro de licence : <?php echo htmlspecialchars($membre['ID']); ?></li>
+                    <li>Nom : <?php echo htmlspecialchars($membre['Nom']); ?></li>
+                    <li>Prénom : <?php echo htmlspecialchars($membre['Prenom']); ?></li>
+                    <li>Ville : <?php echo htmlspecialchars($membre['Ville']); ?></li>
+                    <li>Age : <?php echo htmlspecialchars($membre['Age']); ?></li>
+                    <li>Niveau : <?php echo htmlspecialchars($membre['Niveau']); ?></li>
+                </ul>
+            </div>
+        </section>
     </div>
+    <?php require('footer.php'); ?>
 </body>
-
 </html>

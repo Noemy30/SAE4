@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: "Shippori Mincho", serif;
+}
+
+
+.adherents-container {
+    margin: 50px auto;
+    padding: 20px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.adherents-container h2 {
+    color: #333;
+}
+
+.adherents-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #9acb34;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.adherents-container a:hover {
+    background-color: #6d8e24;
+}

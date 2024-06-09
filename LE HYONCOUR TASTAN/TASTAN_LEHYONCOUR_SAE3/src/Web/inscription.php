@@ -1,5 +1,5 @@
 <?php
-include 'connexion.php';
+require('connexion.php');
 require('header1.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

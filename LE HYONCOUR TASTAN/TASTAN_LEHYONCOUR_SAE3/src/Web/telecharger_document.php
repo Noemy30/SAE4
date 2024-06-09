@@ -1,5 +1,5 @@
 <?php
-include 'connexion.php';
+
 
 if (isset($_GET['id'])) {
     $id_img = $_GET['id'];

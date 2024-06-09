@@ -1,0 +1,145 @@
+body {
+    font-family: 'Shippori Mincho', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Style du conteneur du formulaire */
+.form-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 10vw auto 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 10vw;
+}
+
+.form-container:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style des étiquettes du formulaire */
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Style des champs de texte du formulaire */
+.form-container input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+.form-container input[type="text"]:focus {
+    border-color: #9ACB34;
+    box-shadow: 0 0 5px rgba(154, 203, 52, 0.5);
+    outline: none;
+}
+
+/* Style du bouton du formulaire */
+.form-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #9ACB34;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #6d8e24;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Style du lien de retour à l'accueil */
+.retourAccueil {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.retourAccueil a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7d7676;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.retourAccueil a:hover {
+    background-color: #5a5757;
+}
+
+/* Conteneur pour les messages */
+#messages {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Style des messages de succès */
+.success-message {
+    background-color: #71a307;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Style des messages d'erreur */
+.error-message {
+    background-color: rgb(227, 88, 88);
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Style des messages informatifs */
+.info-message {
+    background-color: rgb(147, 147, 209);
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+   
+}
