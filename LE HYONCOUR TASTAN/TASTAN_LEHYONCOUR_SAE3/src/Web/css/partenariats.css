@@ -13,7 +13,7 @@ body {
 }
 
 .partenaire {
-    margin-top: 9vw;
+  margin-top: 9vw;
 }
 
 .form-container {
@@ -21,11 +21,11 @@ body {
 }
 
 .form-container h3 {
-    color: #9ACB34;
+  color: #9acb34;
 }
 
 .form-container p {
-    text-align: justify;
-    margin-bottom: 5vw;
-    line-height: 2;
+  text-align: justify;
+  margin-bottom: 5vw;
+  line-height: 2;
 }

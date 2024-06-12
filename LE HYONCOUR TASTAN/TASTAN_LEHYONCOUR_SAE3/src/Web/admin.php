@@ -2,26 +2,19 @@
 require ('header1.php');
 require ('connexion.php');
 
-// Initialisation des variables
 $error_message = '';
 
-// Vérifier si le formulaire de téléchargement de document a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifier si un fichier a été téléchargé
     if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
-        // Récupérer les informations du fichier
         $img_nom = $_FILES["image"]["name"];
         $img_type = $_FILES["image"]["type"];
         $img_taille = $_FILES["image"]["size"];
         $img_tmp = $_FILES["image"]["tmp_name"];
 
-        // Définir le chemin du dossier où les fichiers seront enregistrés
         $dossier = 'documentAdmin/';
         $chemin_fichier = $dossier . basename($img_nom);
 
-        // Enregistrer le fichier dans le dossier
         if (move_uploaded_file($img_tmp, $chemin_fichier)) {
-            // Insérer le chemin du fichier dans la base de données
             $sql = "INSERT INTO document_administratif (nom_fich, chemin_fich) VALUES (?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ss", $img_nom, $chemin_fichier);
@@ -69,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" name="lieu" required>
                         <br>
                         <label for="horaire">Horaire :</label>
-                        <input type="datetime-local" name="horaire" required>
+                        <input type="datetime-local" id="horaire" name="horaire" required>
                         <br>
                         <label for="joueurs_necessaires">Nombre de joueurs nécessaires :</label>
                         <input type="number" name="joueurs_necessaires" required min="6">
@@ -144,6 +137,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
 
+            <div class="form-container">
+                <h2>Ajouter une image à la galerie</h2>
+                <form action="uploadgalerie.php" method="post" enctype="multipart/form-data">
+                    <label for="image">Choisir une image :</label>
+                    <input type="file" name="image" accept="image/*" required>
+                    <br>
+                    <input type="submit" value="Télécharger">
+                </form>
+            </div>
+
 
             <div class="form-container">
                 <h2>Voir la liste des adhérents</h2>
@@ -152,38 +155,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Set the minimum date to today
-            const today = new Date().toISOString().split('T')[0];
-            document.querySelector('input[type="datetime-local"]').setAttribute('min', today);
 
-            // Add form validation
-            document.querySelector('form').addEventListener('submit', function (event) {
-                const joueurs_necessaires = document.querySelector('input[name="joueurs_necessaires"]').value;
-                const places_disponibles = document.querySelector('input[name="places_disponibles"]').value;
-                let isValid = true;
-                let errorMessage = '';
-
-                // Check number of players
-                if (joueurs_necessaires <= 5) {
-                    isValid = false;
-                    errorMessage += 'Le nombre de joueurs nécessaires doit être supérieur à 5.\n';
-                }
-
-                // Check places available
-                if (!/^\d+$/.test(places_disponibles)) {
-                    isValid = false;
-                    errorMessage += 'Les places disponibles doivent être un nombre.\n';
-                }
-
-                if (!isValid) {
-                    event.preventDefault();
-                    alert(errorMessage);
-                }
-            });
-        });
-    </script>
+    <script src="script/date.js"></script>
 
     <?php
     require ('footer.php');

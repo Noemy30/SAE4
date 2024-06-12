@@ -34,3 +34,23 @@ body {
 .adherents-container a:hover {
     background-color: #6d8e24;
 }
+
+.success-message {
+    background-color: #71a307;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.error-message {
+    background-color: rgb(227, 88, 88);
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in;
+}

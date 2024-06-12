@@ -82,25 +82,33 @@ $isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true
     </div>
 
     <div class="form-container">
-        <h2>Demandes d'inscription en attente</h2>
-        <?php
-        $sql = "SELECT * FROM demandes_inscription WHERE etat = 'en_attente'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            echo "<table>";
-            echo "<tr><th>Nom</th><th>Prénom</th><th>Niveau de pratique</th></tr>";
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['nom']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['prenom']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['niveau_pratique']) . "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "Aucune demande d'inscription en attente.";
-        }
-        ?>
+        <table class="competition-table">
+            <h2>Demandes d'inscription en attente</h2>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Niveau de pratique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT * FROM demandes_inscription WHERE etat = 'en_attente'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($row['nom']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['prenom']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['niveau_pratique']) . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "Aucune demande d'inscription en attente.";
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
 
     <div class="form-container">
