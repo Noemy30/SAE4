@@ -27,9 +27,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($result->num_rows === 1) {
                     $row = $result->fetch_assoc();
                     
-                    // Utilisation de password_verify pour comparer les mots de passe hachés
-                    if (($user_type === 'member' && password_verify($password, $row['password'])) ||
-                        ($user_type === 'admin' && password_verify($password, $row['mdp']))) {
+                    // Récupérer le sel stocké
+                    $stored_salt = $row['salt'];
+
+                    // Combiner le sel stocké avec le mot de passe entré
+                    $salted_password = $stored_salt . $password;
+
+                    // Comparer les mots de passe hachés
+                    if (($user_type === 'member' && password_verify($salted_password, $row['password'])) ||
+                        ($user_type === 'admin' && password_verify($salted_password, $row['mdp']))) {
                         $_SESSION['loggedin'] = true;
                         $_SESSION['nom'] = $login;
                         $_SESSION['is_admin'] = $user_type === 'admin';
