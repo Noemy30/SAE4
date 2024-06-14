@@ -1,6 +1,6 @@
 Administrateur :
 	user : Admin
-	password : MotDePasseAdmin88100
+	password : MotDePasseAdmin88100*
 
 Membre : 
 	user : 1
