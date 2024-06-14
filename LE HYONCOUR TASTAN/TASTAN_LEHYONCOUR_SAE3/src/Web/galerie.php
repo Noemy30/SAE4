@@ -1,6 +1,6 @@
 <?php
 require ('header1.php');
-require ('connexion.php'); 
+require ('connexion.php');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -22,7 +22,7 @@ if ($conn->connect_error) {
 
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $images[] = htmlspecialchars($row["chemin_img"], ENT_QUOTES, 'UTF-8'); 
+            $images[] = htmlspecialchars($row["chemin_img"], ENT_QUOTES, 'UTF-8');
         }
     } else {
         echo "No images found or an error occurred.";

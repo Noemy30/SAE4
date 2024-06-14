@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 
 <head>
-    <meta charset="UTF-8">
     <title>Ajout d'une compétition</title>
     <link rel="stylesheet" href="css/competition1.css">
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"

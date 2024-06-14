@@ -1,115 +1,115 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    font-family: "Shippori Mincho", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: "Shippori Mincho", serif;
 }
 
 h1 {
-    text-align: center;
-    margin-top: 10vw;
+  text-align: center;
+  margin-top: 10vw;
 }
 
 .slogan {
-    text-align: center;
-    margin-top: 3vw;
-    margin-bottom: 5vw;
+  text-align: center;
+  margin-top: 3vw;
+  margin-bottom: 5vw;
 }
 
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 2vh 2vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2vh 2vw;
 }
 
 .box_histoire {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 2.5vh 2.5vw;
-    margin: 1vh 1vw;
-    margin-right: 11vh;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2.5vh 2.5vw;
+  margin: 1vh 1vw;
+  margin-right: 11vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
 }
 
 .box_mission {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 2.5vh 2.5vw;
-    margin: 1vh 1vw;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2.5vh 2.5vw;
+  margin: 1vh 1vw;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
 }
 
 .box_evenement {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 2.5vh 2.5vw;
-    margin: 1vh 1vw;
-    margin-right: 30vh;
-    margin-left: 30vh;
-    margin-top: 6vw;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2.5vh 2.5vw;
+  margin: 1vh 1vw;
+  margin-right: 30vh;
+  margin-left: 30vh;
+  margin-top: 6vw;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
 }
 
 .box_installation {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 2.5vh 2.5vw;
-    margin: 1vh 1vw;
-    margin-right: 7vw;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    margin-top: 6vw;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2.5vh 2.5vw;
+  margin: 1vh 1vw;
+  margin-right: 7vw;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin-top: 6vw;
 }
 
 .box_adhesion {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 2.5vh 2.5vw;
-    margin: 1vh 1vw;
-    margin-right: 11vh;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin-top: 6vw;
-    margin-right: 13vw;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2.5vh 2.5vw;
+  margin: 1vh 1vw;
+  margin-right: 11vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin-top: 6vw;
+  margin-right: 13vw;
 }
 
 .box_contact {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 2.5vh 2.5vw;
-    margin: 1vh 1vw;
-    margin-right: 11vh;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin-top: 6vw;
-    margin-left: 16.5vw;
-    margin-bottom: 10vw;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 2.5vh 2.5vw;
+  margin: 1vh 1vw;
+  margin-right: 11vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin-top: 6vw;
+  margin-left: 16.5vw;
+  margin-bottom: 10vw;
 }
 
 .container h3 {
-    color: #9ACB34; 
-    font-size: 1.4em;
-    margin-bottom: 1em;
+  color: #9acb34;
+  font-size: 1.4em;
+  margin-bottom: 1em;
 }
 
 .container p {
-    margin-bottom: 1em;
-    line-height: 2;
-    text-align: justify;
+  margin-bottom: 1em;
+  line-height: 2;
+  text-align: justify;
 }
 
 .img_box img {
-    margin-top: 50%;
-    width: 90%;
+  margin-top: 50%;
+  width: 90%;
 }

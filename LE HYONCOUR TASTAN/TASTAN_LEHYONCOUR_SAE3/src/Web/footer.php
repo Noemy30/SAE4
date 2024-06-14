@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Club de Tennis</title>
     <link rel="stylesheet" href="css/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <div class="footer">
         <div class="footer-content">
@@ -17,4 +19,5 @@
         </div>
     </div>
 </body>
+
 </html>

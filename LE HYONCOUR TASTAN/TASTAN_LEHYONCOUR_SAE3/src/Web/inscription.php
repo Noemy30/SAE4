@@ -1,12 +1,12 @@
 <?php
-require('connexion.php');
-require('header1.php');
+require ('connexion.php');
+require ('header1.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $niveau_pratique = $_POST['niveau_pratique'];
-    $competition_id = $_POST['competition_id']; 
+    $competition_id = $_POST['competition_id'];
 
     $sql = "INSERT INTO inscriptionn (nom, prenom, niveau_pratique, competition_id) VALUES ('$nom', '$prenom', '$niveau_pratique', '$competition_id')";
 

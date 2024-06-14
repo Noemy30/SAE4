@@ -2,16 +2,12 @@
 require ('header1.php');
 require ('connexion.php');
 
-// Vérifiez si l'utilisateur est connecté
 $isUserLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des tournois</title>
     <link href="css/tournois.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"

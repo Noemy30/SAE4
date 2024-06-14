@@ -1,57 +1,56 @@
-/* Général */
 body {
-    font-family: 'Shippori Mincho', serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    color: #333;
+  font-family: "Shippori Mincho", serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
 .title h2 {
-    color: #333;
-    text-align: center;
-    margin-top: 10vw;
-    font-size: 35px;
-    font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-top: 10vw;
+  font-size: 35px;
+  font-weight: bold;
 }
 
 .form-container {
-    background: #fff;
-    padding: 20px;
-    margin: 10vw auto; /* Augmenter la marge pour plus d'espace */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+  background: #fff;
+  padding: 20px;
+  margin: 10vw auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
 }
 
 .form-container h2 {
-    font-size: 24px;
-    margin-bottom: 9w;
-    text-align: center;
+  font-size: 24px;
+  margin-bottom: 9w;
+  text-align: center;
 }
 
-/* Tableaux */
 table.competition-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 table.competition-table thead {
-    background-color: #9ACB34;
-    color: #333;
+  background-color: #9acb34;
+  color: #333;
 }
 
-table.competition-table th, table.competition-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border: 1px solid #ddd;
+table.competition-table th,
+table.competition-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
 table.competition-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 table.competition-table tbody tr:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
