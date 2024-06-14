@@ -3,8 +3,8 @@ Administrateur :
 	password : MotDePasseAdmin88100*
 
 Membre : 
-	user : 1
-	password : pass1
+	user : tastan
+	password : Qsdfghjklm1*
 
 (autre compte voir BDD)
 	
