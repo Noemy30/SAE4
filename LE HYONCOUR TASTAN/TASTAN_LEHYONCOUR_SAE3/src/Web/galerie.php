@@ -1,11 +1,13 @@
 <?php
-require ('header1.php');
-require ('connexion.php');
+require('header1.php');
+require('connexion.php');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 ?>
+
+<html>
 
 <head>
     <link rel="stylesheet" href="css/galerie.css">
@@ -15,14 +17,14 @@ if ($conn->connect_error) {
 
 <body>
     <?php
-    $sql = "SELECT chemin_img FROM galerie";
+    $sql = "SELECT id FROM galerie";
     $result = $conn->query($sql);
 
     $images = array();
 
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $images[] = htmlspecialchars($row["chemin_img"], ENT_QUOTES, 'UTF-8');
+            $images[] = intval($row["id"]);
         }
     } else {
         echo "No images found or an error occurred.";
@@ -42,7 +44,8 @@ if ($conn->connect_error) {
                 $index = $i + $j;
 
                 if ($index < $rowCount) {
-                    echo "<td><img src='" . $images[$index] . "' alt='Image " . ($index + 1) . "' onclick='showFullscreen(\"" . $images[$index] . "\")'></td>";
+                    $imageId = $images[$index];
+                    echo "<td><img src='image.php?id=" . $imageId . "' alt='Image " . ($index + 1) . "' onclick='showFullscreen(" . $imageId . ")'></td>";
                 } else {
                     echo "<td></td>";
                 }
@@ -59,11 +62,11 @@ if ($conn->connect_error) {
     </div>
 
     <script>
-        function showFullscreen(imageUrl) {
+        function showFullscreen(imageId) {
             const fullscreenContainer = document.getElementById('fullscreen-container');
             const fullscreenImage = document.getElementById('fullscreen-image');
 
-            fullscreenImage.src = imageUrl;
+            fullscreenImage.src = 'image.php?id=' + imageId;
             fullscreenContainer.style.display = 'flex';
         }
 
@@ -73,7 +76,7 @@ if ($conn->connect_error) {
         }
     </script>
 
-    <?php require ('footer.php'); ?>
+    <?php require('footer.php'); ?>
 </body>
 
 </html>
