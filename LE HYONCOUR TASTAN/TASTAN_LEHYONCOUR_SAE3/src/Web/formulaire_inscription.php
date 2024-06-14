@@ -12,25 +12,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ville = htmlspecialchars($_POST["ville"]);
     $password = htmlspecialchars($_POST["password"]);
 
-    // Log to check the password value
     error_log("Password received: $password");
 
     // Validation du mot de passe côté serveur
     if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/', $password)) {
         $error_message = "Le mot de passe doit contenir au moins 12 caractères, avec au moins une minuscule, une majuscule, un chiffre et un caractère spécial.";
     } else {
-        // Vérifier si l'utilisateur existe déjà
+
         $verifRequete = "SELECT * FROM Membre WHERE Nom='$nom' AND Prenom='$prenom'";
         $result = $conn->query($verifRequete);
 
         if ($result->num_rows > 0) {
             $error_message = "Un membre avec ce nom et prénom existe déjà.";
         } else {
-            // Cryptage du mot de passe
-            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+            // Vérifier si OpenSSL est activé
+            if (function_exists('openssl_random_pseudo_bytes')) {
+                $salt = bin2hex(openssl_random_pseudo_bytes(16));
+            } else {
+                $salt = bin2hex(mt_rand());  // Fallback if OpenSSL is not available
+            }
+
+            // Hashage du mot de passe avec le sel
+            $salted_password = $salt . $password;
+            $hashed_password = password_hash($salted_password, PASSWORD_BCRYPT);
 
             // Insertion dans la base de données
-            $requete = "INSERT INTO Membre (Nom, Prenom, Age, Ville, password) VALUES ('$nom', '$prenom','$age','$ville','$hashed_password')";
+            $requete = "INSERT INTO Membre (Nom, Prenom, Age, Ville, salt, password) VALUES ('$nom', '$prenom','$age','$ville','$salt','$hashed_password')";
 
             if ($conn->query($requete) === TRUE) {
                 $success_message = "Enregistrement réussi !";
@@ -43,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -91,7 +97,7 @@ $conn->close();
                 <input type="text" id="ville" name="ville"><br>
 
                 <label for="password">Mot de passe:</label>
-                <!-- Change the type temporarily to text for debugging -->
+
                 <input type="password" id="password" name="password" required><br>
             </div>
 

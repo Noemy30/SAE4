@@ -5,37 +5,33 @@ require('connexion.php');
 $error_message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifier si les champs sont remplis
     if (!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['user_type'])) {
         $login = $_POST['login'];
         $password = $_POST['password'];
         $user_type = $_POST['user_type'];
 
-        // Préparer les requêtes SQL en fonction du type d'utilisateur
         if ($user_type === 'member') {
-            $sql = "SELECT * FROM membre WHERE ID = ?";
+            $sql = "SELECT * FROM membre WHERE Nom = ?";
         } elseif ($user_type === 'admin') {
-            $sql = "SELECT * FROM admin WHERE ID = ?";
+            $sql = "SELECT * FROM admin WHERE Nom = ?";
         } else {
             $error_message = "Type d'utilisateur invalide.";
         }
 
         if (empty($error_message)) {
-            // Préparer et exécuter la requête
             if ($stmt = $conn->prepare($sql)) {
                 $stmt->bind_param("s", $login);
                 $stmt->execute();
                 $result = $stmt->get_result();
 
-                // Vérifier les résultats de la requête
                 if ($result->num_rows === 1) {
                     $row = $result->fetch_assoc();
-                    // Comparer directement les mots de passe en texte clair
-                    if (($user_type === 'member' && $password === $row['password']) ||
-                        ($user_type === 'admin' && $password === $row['mdp'])) {
-                        // Authentification réussie
+                    
+                    // Utilisation de password_verify pour comparer les mots de passe hachés
+                    if (($user_type === 'member' && password_verify($password, $row['password'])) ||
+                        ($user_type === 'admin' && password_verify($password, $row['mdp']))) {
                         $_SESSION['loggedin'] = true;
-                        $_SESSION['id'] = $login;
+                        $_SESSION['nom'] = $login;
                         $_SESSION['is_admin'] = $user_type === 'admin';
 
                         if ($user_type === 'member') {
@@ -53,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $stmt->close();
             } else {
-                $error_message = "Erreur lors de la préparation de la requête.";
+                $error_message = "Erreur lors de la préparation de la requête : " . $conn->error;
             }
         }
     } else {
@@ -62,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">

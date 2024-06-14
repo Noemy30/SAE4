@@ -8,14 +8,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
-// Récupérez l'ID de l'utilisateur connecté
-$login_id = $_SESSION['id'];
+// Récupérez le nom de l'utilisateur connecté
+$login_nom = $_SESSION['nom'];
 
 // Récupérez les informations de l'utilisateur
 $membre = null;
-$sql = "SELECT * FROM membre WHERE ID = ?";  // Assurez-vous que le champ ID correspond à celui que vous utilisez pour identifier les utilisateurs
+$sql = "SELECT * FROM membre WHERE Nom = ?"; // Utilisation de Nom au lieu de ID
 if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("s", $login_id);
+    $stmt->bind_param("s", $login_nom);
     $stmt->execute();
     $result = $stmt->get_result();
 
