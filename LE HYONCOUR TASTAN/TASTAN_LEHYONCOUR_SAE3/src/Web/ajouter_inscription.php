@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $competition_id = isset($_POST['competition_id']) ? intval($_POST['competition_id']) : 0;
 
     if ($competition_id > 0) {
-        // Vérifier si la personne est déjà inscrite
         $check_existing = "SELECT * FROM adherents WHERE nom = '$nom' AND prenom = '$prenom' AND competition_id = $competition_id";
         $result_existing = $conn->query($check_existing);
 
@@ -60,8 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 
 <head>
     <meta charset="UTF-8">

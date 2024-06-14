@@ -20,8 +20,6 @@
 
             if (isset($_GET['id'])) {
                 $membre_id = intval($_GET['id']);
-
-                // Effectuez une requête pour supprimer le membre
                 $sql_delete = "DELETE FROM membre WHERE ID = $membre_id";
                 $result_delete = $conn->query($sql_delete);
 

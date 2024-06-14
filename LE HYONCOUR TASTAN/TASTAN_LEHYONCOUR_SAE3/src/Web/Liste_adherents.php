@@ -1,19 +1,14 @@
 <?php
-require('header1.php');
-require('connexion.php');
+require ('header1.php');
+require ('connexion.php');
 
-// Set the character set for the database connection to UTF-8
 $conn->set_charset('utf8mb4');
 
-
-// Vérifier si le formulaire de connexion est soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Récupérer les données du formulaire et échapper les caractères spéciaux
     $nom_utilisateur = htmlspecialchars($_POST["nom_utilisateur"], ENT_QUOTES, 'UTF-8');
     $mot_de_passe = htmlspecialchars($_POST["mot_de_passe"], ENT_QUOTES, 'UTF-8');
 
-    // Requête SQL pour vérifier les informations d'identification
     $sql = "SELECT * FROM admin WHERE nom_utilisateur = ? AND mdp = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ss', $nom_utilisateur, $mot_de_passe);
@@ -21,11 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result && $result->num_rows > 0) {
-        // Informations d'identification valides
         $_SESSION['is_admin'] = true;
         $_SESSION['last_activity'] = time();
     } else {
-        // Informations d'identification invalides
         echo "<p style='color: red;'>Nom d'utilisateur ou mot de passe incorrect.</p>";
     }
 
@@ -33,33 +26,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 
-// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-    // Rediriger vers la page de connexion
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 
-// Vérifier si la session est expirée (30 minutes d'inactivité)
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > 1800)) {
     session_unset();
     session_destroy();
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 
-// Mettre à jour le dernier horodatage d'activité
 $_SESSION['last_activity'] = time();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
     <title>Liste des adhérents</title>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
+        rel="stylesheet" type="text/css">
     <link href="css/liste.css" rel="stylesheet" />
 </head>
+
 <body>
 
     <div class="adherents-container">
@@ -75,7 +66,7 @@ $_SESSION['last_activity'] = time();
                 <th>Action Supprimer</th>
             </tr>
             <?php
-            require('connexion.php');
+            require ('connexion.php');
             $conn->set_charset('utf8mb4');
 
             $sql = "SELECT ID, Nom, Prenom, Niveau FROM membre";
@@ -102,7 +93,8 @@ $_SESSION['last_activity'] = time();
 
     </div>
     <?php
-    require('footer.php');
+    require ('footer.php');
     ?>
 </body>
+
 </html>

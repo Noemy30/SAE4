@@ -1,63 +1,63 @@
-
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    font-family: "Shippori Mincho", serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: "Shippori Mincho", serif;
 }
 
 .title {
-    text-align: center;
-    padding: 1em 0;
-    margin-bottom: 10vw;
-    margin-top: 10vw;
+  text-align: center;
+  padding: 1em 0;
+  margin-bottom: 10vw;
+  margin-top: 10vw;
 }
 
 .title h1 {
-    font-size: 2.5em;
-    margin: 0;
+  font-size: 2.5em;
+  margin: 0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    padding: 0 1em;
-    gap: 1em;
+  display: flex;
+  justify-content: center;
+  padding: 0 1em;
+  gap: 1em;
 }
 
-.col1, .col2 {
-    flex: 1;
-    min-width: 300px;
-    margin: 0 1em;
+.col1,
+.col2 {
+  flex: 1;
+  min-width: 300px;
+  margin: 0 1em;
 }
 
 .col1 {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 .col2 {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .form-container {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 1em;
-    margin-bottom: 2em;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1em;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form-container h2 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 .form-container label {
-    display: block;
-    font-weight: bold;
-    margin: 0.5em 0 0.2em;
+  display: block;
+  font-weight: bold;
+  margin: 0.5em 0 0.2em;
 }
 
 .form-container input[type="text"],
@@ -65,88 +65,88 @@ body {
 .form-container input[type="number"],
 .form-container input[type="file"],
 .form-container input[type="submit"] {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-family: "Shippori Mincho", serif;
-    font-size: 15px;
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Shippori Mincho", serif;
+  font-size: 15px;
 }
 
 .form-container .ajouter input[type="submit"] {
-    background-color: #656363;
-    color: #fff;
+  background-color: #656363;
+  color: #fff;
 }
 
 .form-container .ajouter input[type="submit"]:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
 input[type="submit"] {
-    background-color: #9acb34;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #9acb34;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #6d8e24;
+  background-color: #6d8e24;
 }
 
 .button {
-    display: inline-block;
-    text-align: center;
-    padding: 0.5em 1em;
-    color: #fff;
-    background-color: #656363;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    width: 95%;
+  display: inline-block;
+  text-align: center;
+  padding: 0.5em 1em;
+  color: #fff;
+  background-color: #656363;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  width: 95%;
 }
 
 .button:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
-
 table.competition-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    font-family: "Tenor Sans", sans-serif;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-family: "Tenor Sans", sans-serif;
 }
 
 table.competition-table thead {
-    background-color: #9ACB34;
+  background-color: #9acb34;
 }
 
-table.competition-table th, table.competition-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border: 1px solid #ddd;
+table.competition-table th,
+table.competition-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
 table.competition-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 table.competition-table tbody tr:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 .container h2 {
-    text-align: center;
-    margin-bottom: 2vw;
+  text-align: center;
+  margin-bottom: 2vw;
 }
 
-.telechargerFichier a{
-    color: #333;
-    text-decoration: none;
+.telechargerFichier a {
+  color: #333;
+  text-decoration: none;
 }
 
 .derniereBox {
-    margin-bottom: 10vw;
+  margin-bottom: 10vw;
 }

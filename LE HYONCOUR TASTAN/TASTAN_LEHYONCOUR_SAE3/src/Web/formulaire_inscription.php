@@ -25,18 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $error_message = "Un membre avec ce nom et prénom existe déjà.";
         } else {
-            // Vérifier si OpenSSL est activé
             if (function_exists('openssl_random_pseudo_bytes')) {
                 $salt = bin2hex(openssl_random_pseudo_bytes(16));
             } else {
-                $salt = bin2hex(mt_rand());  // Fallback if OpenSSL is not available
+                $salt = bin2hex(mt_rand());
             }
 
-            // Hashage du mot de passe avec le sel
             $salted_password = $salt . $password;
             $hashed_password = password_hash($salted_password, PASSWORD_BCRYPT);
 
-            // Insertion dans la base de données
             $requete = "INSERT INTO Membre (Nom, Prenom, Age, Ville, salt, password) VALUES ('$nom', '$prenom','$age','$ville','$salt','$hashed_password')";
 
             if ($conn->query($requete) === TRUE) {
@@ -51,15 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $conn->close();
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
     <link href="css/formuInscri.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
         rel="stylesheet" type="text/css">
     <script>

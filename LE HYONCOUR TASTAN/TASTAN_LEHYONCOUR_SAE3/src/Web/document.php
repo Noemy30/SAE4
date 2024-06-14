@@ -1,8 +1,7 @@
 <?php
-require('header1.php');
-require('connexion.php');
+require ('header1.php');
+require ('connexion.php');
 
-// Set the character set for the database connection to UTF-8
 $conn->set_charset('utf8mb4');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -36,14 +35,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+<html>
+
 <head>
-    <meta charset="UTF-8">
     <title>Télécharger un document</title>
     <link href="css/documentation.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
+        rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <div class="container-docEnvoyer">
         <div class="form-container">
@@ -64,8 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-container">
             <h2>Télécharger nos documents administratifs</h2>
             <?php
-            // Create a new connection to fetch documents
-            require('connexion.php');
+            require ('connexion.php');
             $conn->set_charset('utf8mb4');
 
             $sql = "SELECT id_fichier, nom_fich, chemin_fich FROM document_administratif";
@@ -85,7 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <?php
-    require('footer.php');
+    require ('footer.php');
     ?>
 </body>
+
 </html>

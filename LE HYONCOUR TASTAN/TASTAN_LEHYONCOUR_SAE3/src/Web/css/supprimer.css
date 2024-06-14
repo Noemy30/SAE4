@@ -43,21 +43,21 @@ form {
 }
 
 form input {
-    margin-top: 2vw;
-    padding: 1%;
-    color:white;
-    background-color: #9ACB34;
-    font-family: "Shippori Mincho", serif;
-    font-size: 15px;
-    border-radius: 10px;
+  margin-top: 2vw;
+  padding: 1%;
+  color: white;
+  background-color: #9acb34;
+  font-family: "Shippori Mincho", serif;
+  font-size: 15px;
+  border-radius: 10px;
 }
 
 form input:hover {
-    margin-top: 2vw;
-    padding: 1%;
-    color:white;
-    background-color: #7ca522;
-    font-family: "Shippori Mincho", serif;
-    font-size: 15px;
-    border-radius: 10px;
+  margin-top: 2vw;
+  padding: 1%;
+  color: white;
+  background-color: #7ca522;
+  font-family: "Shippori Mincho", serif;
+  font-size: 15px;
+  border-radius: 10px;
 }

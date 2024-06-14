@@ -21,7 +21,6 @@
             if (isset($_GET['id'])) {
                 $membre_id = intval($_GET['id']);
 
-                // Effectuez une requête pour récupérer les informations du membre
                 $sql = "SELECT * FROM membre WHERE ID = $membre_id";
                 $result = $conn->query($sql);
 

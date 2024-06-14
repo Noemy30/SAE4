@@ -1,19 +1,16 @@
 <?php
-require('header1.php');
-require('connexion.php');
+require ('header1.php');
+require ('connexion.php');
 
-// Vérifiez si l'utilisateur est connecté
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: index.php");
     exit();
 }
 
-// Récupérez le nom de l'utilisateur connecté
 $login_nom = $_SESSION['nom'];
-
-// Récupérez les informations de l'utilisateur
 $membre = null;
-$sql = "SELECT * FROM membre WHERE Nom = ?"; // Utilisation de Nom au lieu de ID
+$sql = "SELECT * FROM membre WHERE Nom = ?";
+
 if ($stmt = $conn->prepare($sql)) {
     $stmt->bind_param("s", $login_nom);
     $stmt->execute();
@@ -27,29 +24,30 @@ if ($stmt = $conn->prepare($sql)) {
 
 $conn->close();
 
-// Gérer le cas où les informations de l'utilisateur ne sont pas trouvées
 if ($membre === null) {
     echo "Erreur : informations utilisateur introuvables.";
     exit();
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+
+<html>
+
 <head>
     <title>Profil de l'utilisateur</title>
     <link rel="stylesheet" href="css/membre.css">
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap" rel="stylesheet" type="text/css">
-    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Tenor+Sans&display=swap"
+        rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <div class="membre">
         <div class="title">
-            <h2>Bienvenue dans l'espace membre, <?php echo htmlspecialchars($membre['Nom']); ?> <?php echo htmlspecialchars($membre['Prenom']); ?>!</h2>
+            <h2>Bienvenue dans l'espace membre, <?php echo htmlspecialchars($membre['Nom']); ?>
+                <?php echo htmlspecialchars($membre['Prenom']); ?>!</h2>
         </div>
         <section class="container">
             <div class="col1">
-                <!-- Ajoutez le contenu de l'espace membre ici -->
                 <h2>Vos informations !</h2>
                 <ul>
                     <li>Numéro de licence : <?php echo htmlspecialchars($membre['ID']); ?></li>
@@ -62,6 +60,7 @@ if ($membre === null) {
             </div>
         </section>
     </div>
-    <?php require('footer.php'); ?>
+    <?php require ('footer.php'); ?>
 </body>
+
 </html>

@@ -10,13 +10,11 @@ require ('header1.php');
 
 
 <body>
-
     <h1>Bienvenue au Club de Tennis4Ever</h1>
+
     <div class="slogan">
         <p>Votre passion, notre engagement</p>
     </div>
-
-
 
     <div class="container">
         <div class="box_histoire">
@@ -49,10 +47,11 @@ require ('header1.php');
         <div class="box_installation">
             <h3>Nos Installations</h3>
             <p>Nos installations modernes offrent des courts bien entretenus, équipés de l'éclairage nécessaire pour des
-                parties nocturnes passionnantes. 
+                parties nocturnes passionnantes.
                 <br><br>
                 Notre club-house chaleureux est l'endroit idéal pour se détendre après
-                un match intense, échanger des anecdotes et partager des moments de camaraderie.</p>
+                un match intense, échanger des anecdotes et partager des moments de camaraderie.
+            </p>
         </div>
         <div class="img_box">
             <img src="img/cours2.jpeg" alt="Photo salle de tennis">
