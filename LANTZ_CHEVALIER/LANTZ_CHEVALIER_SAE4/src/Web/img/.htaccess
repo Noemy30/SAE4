@@ -2,7 +2,7 @@ RewriteEngine On
 
 # Empêcher le hotlinking
 RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^http(s)?://(localhost)/SAE4/LE%20HYONCOUR%20TASTAN/TASTAN_LEHYONCOUR_SAE3/src/Web/ [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(localhost)/SAE4/LANTZ_CHEVALIER/LANTZ_CHEVALIER_SAE4/src/Web/ [NC]
 RewriteRule \.(jpg|jpeg|png|gif)$ - [F,NC,L]
 
 # Compression des images
